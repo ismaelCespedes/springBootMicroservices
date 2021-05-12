@@ -1,4 +1,4 @@
-package com.programming.techie.productservice.model;
+package com.springboot.microservices.productservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

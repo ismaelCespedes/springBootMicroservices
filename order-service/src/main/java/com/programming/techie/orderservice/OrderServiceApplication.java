@@ -10,8 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 @SpringBootApplication
-@EnableEurekaClient
-@EnableFeignClients
+/*@EnableEurekaClient
+@EnableFeignClients*/
 public class OrderServiceApplication {
 
     public static void main(String[] args) {

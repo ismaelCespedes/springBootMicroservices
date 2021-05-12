@@ -1,7 +1,7 @@
-package com.programming.techie.productservice.controller;
+package com.springboot.microservices.productservice.controller;
 
-import com.programming.techie.productservice.model.Product;
-import com.programming.techie.productservice.repository.ProductRepository;
+import com.springboot.microservices.productservice.model.Product;
+import com.springboot.microservices.productservice.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
