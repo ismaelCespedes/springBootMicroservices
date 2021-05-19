@@ -8,7 +8,7 @@
 		<version>2.3.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.programming.techie</groupId>
+	<groupId>com.springBoot.microservices</groupId>
 	<artifactId>api-gateway-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api-gateway-service</name>
@@ -26,6 +26,14 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
