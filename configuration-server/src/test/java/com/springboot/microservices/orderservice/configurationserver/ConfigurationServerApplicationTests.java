@@ -1,4 +1,4 @@
-package com.programming.techie.configurationserver;
+package com.springboot.microservices.orderservice.configurationserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

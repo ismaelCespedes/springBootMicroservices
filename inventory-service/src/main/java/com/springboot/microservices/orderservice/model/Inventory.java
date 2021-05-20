@@ -6,19 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "t_orders")
-@Getter
-@Setter
+@Table(name = "inventory")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+@Getter
+@Setter
+public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String orderNumber;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<OrderLineItems> orderLineItems;
+    private String skuCode;
+    private Integer stock;
 }
