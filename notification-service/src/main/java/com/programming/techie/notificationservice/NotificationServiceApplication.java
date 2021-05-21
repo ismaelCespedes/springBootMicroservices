@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.function.Consumer;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class NotificationServiceApplication {
 
     public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class NotificationServiceApplication {
     }
 
     @Bean
-    public Consumer<String> notificationEventSupplier() {
-        return message -> new EmailSender().sendEmail(message);
+    public Consumer<Message<String>> notificationEventSupplier() {
+        return message -> new EmailSender().sendEmail(message.getPayload());
     }
 }

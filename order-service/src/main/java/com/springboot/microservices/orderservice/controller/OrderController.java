@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
 
 @RestController
 @RequestMapping("/api/order")
@@ -26,9 +27,11 @@ public class OrderController {
     private final InventoryClient inventoryClient;
     private final Resilience4JCircuitBreakerFactory circuitBreakerFactory;
     private final StreamBridge streamBridge;
+    private final ExecutorService traceableExecutorService;
 
     @PostMapping
     public String placeOrder(@RequestBody OrderDto orderDto) {
+        circuitBreakerFactory.configureExecutorService(traceableExecutorService);
         Resilience4JCircuitBreaker circuitBreaker = circuitBreakerFactory.create("inventory");
         java.util.function.Supplier<Boolean> booleanSupplier = () -> orderDto.getOrderLineItemsList().stream()
                 .allMatch(lineItem -> inventoryClient.checkStock(lineItem.getSkuCode()));
@@ -42,7 +45,7 @@ public class OrderController {
             orderRepository.save(order);
 
             log.info("Sending Order Details to Notification Service");
-            streamBridge.send("notificationEventSupplier-out-0", order.getId());
+            streamBridge.send("notificationEventSupplier-out-0", MessageBulder.withPayload(order.getId()).build());
             return "Order Place Successfully";
         } else {
             return "Order Failed - One of the Product in your Order is out of stock";
